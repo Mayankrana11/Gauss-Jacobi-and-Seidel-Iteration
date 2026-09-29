@@ -1,7 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-void jacobi(int a1, int a2, int a3, int b1, int b2, int b3, int c1, int c2, int c3, int d1, int d2, int d3){
+void seidel(int a1, int a2, int a3, int b1, int b2, int b3, int c1, int c2, int c3, int d1, int d2, int d3){
     //main declare rn would be dynamic/global later 
 
     //init
@@ -9,15 +9,11 @@ void jacobi(int a1, int a2, int a3, int b1, int b2, int b3, int c1, int c2, int 
 
     //iter
     for(int i = 0; i<10; i++){
-        double newx = (d1 - b1 * y - c1 * z) / (double)a1;
-        double newy = (d2 - a2 * x - c2 * z) / (double)b2;
-        double newz = (d3 - a3 * x - b3 * y) / (double)c3;
+        x = (d1 - b1 * y - c1 * z) / (double)a1;
+        y = (d2 - a2 * x - c2 * z) / (double)b2;
+        z = (d3 - a3 * x - b3 * y) / (double)c3;
 
-        x = newx;
-        y = newy;
-        z = newz;
-
-        cout << "Gauss-Jacobi Iteration " << i + 1 << ": ";
+        cout << "Gauss-Seidel Iteration " << i + 1 << ": ";
         cout << "x = " << x << ", ";
         cout << "y = " << y << ", ";
         cout << "z = " << z << endl;
@@ -50,7 +46,7 @@ int main(){
     int d2 = -4;
     int d3 = 10;
 
-    jacobi(a1,a2,a3,b1,b2,b3,c1,c2,c3,d1,d2,d3);
+    seidel(a1,a2,a3,b1,b2,b3,c1,c2,c3,d1,d2,d3);
 
     return 0;
 }

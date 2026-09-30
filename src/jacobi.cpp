@@ -32,6 +32,10 @@ void jacobi(vector<vector<double>>& A, vector<double>& xyz, vector<double>& d){
 
     for(int iter = 0; iter < 10; iter++){
         for(int i = 0; i < n; i++){
+            if (abs(A[i][i]) < 1e-9) {
+                cout << "Error: Zero or near-zero diagonal element encountered at index " << i << ". Jacobi method cannot proceed." << endl;
+                return;
+            }
             double sum = 0;
             for(int j = 0; j < n; j++){
                 if(i != j) {

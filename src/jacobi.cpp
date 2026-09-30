@@ -5,9 +5,29 @@ using namespace std;
 void jacobi(vector<vector<double>>& A, vector<double>& xyz, vector<double>& d){
     //main declare rn would be dynamic/global later
 
+    int n = A.size();
+
+    // Check for Strictly Diagonal Dominance
+    bool isDiagonalDominant = true;
+    for (int i = 0; i < n; i++) {
+        double rowSum = 0;
+        for (int j = 0; j < n; j++) {
+            if (i != j) rowSum += abs(A[i][j]);
+        }
+        if (abs(A[i][i]) <= rowSum) {
+            isDiagonalDominant = false;
+            break;
+        }
+    }
+
+    if (!isDiagonalDominant) {
+        cout << "Warning: The matrix is not strictly diagonally dominant. The Jacobi method may not converge." << endl;
+    }
+
     //init
     /*
     double x = 0; double y = 0; double z = 0;
+
 
     //iter
     for(int i = 0; i<10; i++){

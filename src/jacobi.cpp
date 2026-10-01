@@ -7,7 +7,7 @@ void jacobi(vector<vector<double>>& A, vector<double>& xyz, vector<double>& d){
 
     int n = A.size();
 
-    // Check for Strictly Diagonal Dominance
+    // check for Strictly DD
     bool isDiagonalDominant = true;
     for (int i = 0; i < n; i++) {
         double rowSum = 0;

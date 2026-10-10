@@ -46,7 +46,6 @@ void jacobi(vector<vector<double>>& A, vector<double>& xyz, vector<double>& d){
     }
     */
 
-    int n = A.size();
     vector<double> x_old = xyz;
     vector<double> x_new(n);
 

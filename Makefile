@@ -4,21 +4,29 @@ CXX = g++
 CXXFLAGS = -Wall -Wextra -std=c++17
 
 # Targets
-TARGETS = jacobi seidel
+TARGETS = jacobi.exe seidel.exe test.exe
 
-# Default target
+# Default target: compile everything
 all: $(TARGETS)
 
 # Build Jacobi
-jacobi: src/jacobi.cpp
-	$(CXX) $(CXXFLAGS) src/jacobi.cpp -o jacobi
+jacobi.exe: src/jacobi.cpp
+	$(CXX) $(CXXFLAGS) src/jacobi.cpp -o jacobi.exe
 
 # Build Seidel
-seidel: src/seidel.cpp
-	$(CXX) $(CXXFLAGS) src/seidel.cpp -o seidel
+seidel.exe: src/seidel.cpp
+	$(CXX) $(CXXFLAGS) src/seidel.cpp -o seidel.exe
 
-# Clean up build 
+# Build Test
+test.exe: src/test.cpp
+	$(CXX) $(CXXFLAGS) src/test.cpp -o test.exe
+
+# Run comparison
+test: all
+	./test.exe
+
+# Clean up build files (Windows)
 clean:
-	del /f /q jacobi.exe seidel.exe 2>nul || true
+	del /f /q jacobi.exe seidel.exe test.exe test_input.txt jacobi_output.txt seidel_output.txt 2>nul || true
 
-.PHONY: all clean
+.PHONY: all test clean

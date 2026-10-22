@@ -27,7 +27,7 @@ const vector<TestCase> TEST_CASES = {
     {
         4,
         {{10, 2, 3, 1}, {1, 15, 1, 2}, {2, 3, 20, 1}, {1, 2, 1, 10}},
-        {16, 19, 24, 14},
+        {16, 19, 26, 14},
         {1.0, 1.0, 1.0, 1.0}
     },
     {
@@ -153,7 +153,7 @@ Result analyseOutput(const string& method, const string& outputFile, double time
         }
     }
     if (!result.converged) {
-        result.iterations = 10;
+        result.iterations = 15;
         result.absoluteError = calculateError(x, tc.exactSolution);
         result.errorPercent = calculatePercentageError(x, tc.exactSolution);
     }

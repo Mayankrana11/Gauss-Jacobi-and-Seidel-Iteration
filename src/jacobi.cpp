@@ -49,7 +49,7 @@ void jacobi(vector<vector<double>>& A, vector<double>& xyz, vector<double>& d){
     vector<double> x_old = xyz;
     vector<double> x_new(n);
 
-    for(int iter = 0; iter < 10; iter++){
+    for(int iter = 0; iter < 15; iter++){
         for(int i = 0; i < n; i++){
             if (abs(A[i][i]) < 1e-9) {
                 cout << "Error: Zero or near-zero diagonal element encountered at index " << i << ". Jacobi method cannot proceed." << endl;
